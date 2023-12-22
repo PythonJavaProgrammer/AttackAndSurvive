@@ -22,7 +22,7 @@ def ask_numeric(*args):
                 print("The answer was not in the specified range.\n")
             else:
                 answer_accepted = True
-                return answer
+                return answer + 1
         except ValueError:
             print("Your answer is not of type int. Please try again.\n")
 
