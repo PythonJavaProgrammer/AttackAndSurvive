@@ -22,10 +22,9 @@ def ask_numeric(*args):
                 print("The answer was not in the specified range.\n")
             else:
                 answer_accepted = True
+                return answer
         except ValueError:
             print("Your answer is not of type int. Please try again.\n")
-
-    print("The answer is accepted.")
 
 
 def ask_binary(question: str):
@@ -40,4 +39,3 @@ def ask_binary(question: str):
         elif answer == "n":
             print("You answered no.")
             break
-
