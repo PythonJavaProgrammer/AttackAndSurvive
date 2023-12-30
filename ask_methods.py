@@ -1,30 +1,36 @@
 def ask_numeric(*args, prompt="Would you like to: "):
-    # This function asks for a selection of string values,
-    # each of which it then creates an index for and
-    # prints them out as options for the user to select by
-    # entering in the index value
+    """
+    This function asks for a selection of string values, each of which it then
+    creates an index for and prints them out as options for the user to select
+    by entering in the index value.
 
-    # This loop makes the question get answered infinitely
-    # until the user  gives an answer in the specified
-    # index range
+    Parameters:
+    - args: Variable number of string arguments.
+    - prompt (str): Prompt for the user (default is "Would you like to: ").
 
+    Returns:
+    - int: The selected option index.
+    """
     answer_accepted = False
+
     while not answer_accepted:
         print(prompt)
         length = len(args)
-        for i in range(0, length):
+
+        for i in range(length):
             print(f"{i + 1}: {args[i]}")
 
         try:
-            answer = int(input(f"Please enter your answer: (1 - {length}): ")) - 1
+            answer = int(input(f"Please enter your answer (1 - {length}): "))
 
-            if (answer > length) or answer < 0:
-                print("The answer was not in the specified range.\n")
-            else:
+            if 1 <= answer <= length:
                 answer_accepted = True
-                return answer + 1
-        except ValueError:
-            print("Your answer is not of type int. Please try again.\n")
+                return answer
+            else:
+                print("The answer was not in the specified range.\n")
+
+        except ValueError as e:
+            print(f"Error: {e}. Your answer is not of type int. Please try again.\n")
 
 
 def ask_binary(question: str):
