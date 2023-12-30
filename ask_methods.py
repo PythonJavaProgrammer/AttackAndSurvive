@@ -34,6 +34,16 @@ def ask_numeric(*args, prompt="Would you like to: "):
 
 
 def ask_binary(question: str):
+    """
+    This function receives a question which it asks the user, and waits
+    for a yes or no answer. and returns it as a boolean value.
+
+    Parameters:
+    - question (str): The prompt for the user to respond to
+
+    Returns:
+    - answer: The selected yes or no as a boolean True or False respectively
+    """
     answer = None
     answer_accepted = False
     while not answer_accepted:
