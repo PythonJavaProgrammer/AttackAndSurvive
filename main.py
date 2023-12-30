@@ -13,4 +13,8 @@ def prompt(text: str):
 
 
 if __name__ == "__main__":
-    pass
+    play = ask_binary("Would you like to play Attack and Survive")
+    if play:
+        prompt("Yay!")
+    else:
+        print("Goodbye")
