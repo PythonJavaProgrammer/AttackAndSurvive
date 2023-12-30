@@ -1,4 +1,4 @@
-def ask_numeric(*args):
+def ask_numeric(*args, prompt="Would you like to: "):
     # This function asks for a selection of string values,
     # each of which it then creates an index for and
     # prints them out as options for the user to select by
@@ -10,7 +10,7 @@ def ask_numeric(*args):
 
     answer_accepted = False
     while not answer_accepted:
-        print("Would you like to: ")
+        print(prompt)
         length = len(args)
         for i in range(0, length):
             print(f"{i + 1}: {args[i]}")
