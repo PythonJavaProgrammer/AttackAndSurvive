@@ -15,6 +15,12 @@ def prompt(text: str):
 if __name__ == "__main__":
     play = ask_binary("Would you like to play Attack and Survive")
     if play:
-        prompt("Yay!")
+        false_name = True
+        while false_name:
+            name = ask_numeric("John", "Felix", "Landon", "New Name", prompt="Choose your name: ", direct_answer=True)
+            if name == "New Name":
+                name = str(input("Type in the new name here: "))
+            false_name = not ask_binary(f"Your name will be {name}. Is this your choice?")
+
     else:
         print("Goodbye")

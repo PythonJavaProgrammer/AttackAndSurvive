@@ -49,15 +49,13 @@ def ask_binary(question: str):
     answer = None
     answer_accepted = False
     while not answer_accepted:
-        answer = input(f"{question}? (y/n): ")
+        answer = input(f"{question} (y/n): ")
         if not ((answer == "y") or (answer == 'n')):
             print("I\'m sorry, I didn\'t get that. Please rather enter \'y\' or \'n\'.\n")
         elif answer == "y":
-            print("You answered yes.")
             answer = True
             break
         elif answer == "n":
-            print("You answered no.")
             answer = False
             break
 
