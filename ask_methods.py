@@ -1,4 +1,4 @@
-def ask_numeric(*args, prompt="Would you like to: "):
+def ask_numeric(*args, prompt="Would you like to: ", direct_answer=True):
     """
     This function asks for a selection of string values, each of which it then
     creates an index for and prints them out as options for the user to select
@@ -7,9 +7,11 @@ def ask_numeric(*args, prompt="Would you like to: "):
     Parameters:
     - args: Variable number of string arguments.
     - prompt (str): Prompt for the user (default is "Would you like to: ").
+    - direct_answer (bool): If True, return the text of the selected option.
+                           If False, return the index of the selected option.
 
     Returns:
-    - int: The selected option index.
+    - str or int: The selected option text or index.
     """
     answer_accepted = False
 
@@ -25,7 +27,7 @@ def ask_numeric(*args, prompt="Would you like to: "):
 
             if 1 <= answer <= length:
                 answer_accepted = True
-                return answer
+                return args[answer - 1] if direct_answer else answer
             else:
                 print("The answer was not in the specified range.\n")
 
