@@ -1,5 +1,5 @@
 from ask_methods import *
-
+from town import Town
 
 def prompt(text: str):
     """
@@ -21,6 +21,8 @@ if __name__ == "__main__":
             if name == "New Name":
                 name = str(input("Type in the new name here: "))
             false_name = not ask_binary(f"Your name will be {name}. Is this your choice?")
+
+        prompt("You find yourself in Roku Town")
 
     else:
         print("Goodbye")
