@@ -5,5 +5,5 @@
 ## Add Database Support
 1. Add drivers
 2. Connect to database
-3. Crate organisation system
+3. Create organisation system
 4. Implement system
