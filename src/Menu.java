@@ -1,23 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-
 import java.util.*;
 import javax.swing.*;
 
-/**
- *
- * @author csbot
- */
 public class Menu {
 
-    public static int optionMenu(ArrayList arr) {
+    public static int optionMenu(ArrayList<String> arr) {
 
-        if (Area.inSpecialArea == true) {
+        if (Area.inSpecialArea) {
             arr.add("Leave");
-        } else if (Area.inBattle == true) {
+        } else if (Area.inBattle) {
             arr.add("Run");
         } else {
             arr.add("Previous Area");
@@ -27,18 +17,17 @@ public class Menu {
 
         int selected = 0;
         String selectedSTR;
-        String options = "";
+        StringBuilder options = new StringBuilder();
         String[] amountOfOPtions = new String[arr.size()];
 
         for (int i = 0; i < arr.size(); i++) {
-            options = options + "(" + (i + 1) + ")" + arr.get(i).toString() + "\n";
+            options.append("(").append(i + 1).append(")").append(arr.get(i)).append("\n");
             amountOfOPtions[i] = Integer.toString(i + 1);
 
         }
 
         while (selected == 0) {
-            Object[] possibleValues = amountOfOPtions;
-            Object selectedOptions = JOptionPane.showInputDialog(null, "What will you do\n" + options, "Choice", JOptionPane.QUESTION_MESSAGE, null, possibleValues, possibleValues[1]);
+            Object selectedOptions = JOptionPane.showInputDialog(null, "What will you do\n" + options, "Choice", JOptionPane.QUESTION_MESSAGE, null, amountOfOPtions, ((Object[]) amountOfOPtions)[1]);
 
             selectedSTR = (String) selectedOptions;
             selected = Integer.parseInt(selectedSTR);
@@ -50,16 +39,16 @@ public class Menu {
                     System.exit(0);
                     break;
                 case 1:
-                    arr.remove(arr.size() - 1);
-                    arr.remove(arr.size() - 1);
+                    arr.removeLast();
+                    arr.removeLast();
                     Menu.optionMenu(arr);
                     break;
                 default:
                     throw new AssertionError();
             }
-        } else if (selected == arr.size() - 1 && Area.inSpecialArea == false) {
+        } else if (selected == arr.size() - 1 && !Area.inSpecialArea) {
             Area.prevArea();
-        } else if (selected == arr.size() - 1 && Area.inSpecialArea == true) {
+        } else if (selected == arr.size() - 1 && Area.inSpecialArea) {
             Area.leave();
         }
 
@@ -152,7 +141,7 @@ public class Menu {
 
         Main.Battle(Data.damien);
 
-        if (Data.damien.defeated == true) {
+        if (Data.damien.defeated) {
             JOptionPane.showMessageDialog(null, "Good battle, but I'll win next time");
         }else {
             JOptionPane.showMessageDialog(null, "Get gud nooob!");

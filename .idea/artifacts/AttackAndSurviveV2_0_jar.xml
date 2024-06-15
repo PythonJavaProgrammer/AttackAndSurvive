@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AttackAndSurviveV2.0:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/AttackAndSurviveV2_0_jar</output-path>
+    <root id="archive" name="AttackAndSurvive.jar">
+      <element id="module-output" name="AttackAndSurvive" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/sql_drivers/slf4j-api-2.0.13.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/sql_drivers/sqlite-jdbc-3.45.3.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

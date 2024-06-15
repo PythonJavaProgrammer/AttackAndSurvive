@@ -1,27 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 import javax.swing.*;
 
-/**
- *
- * @author csbot
- */
 public class Main {
 
     static boolean hasSave;
-
-    Main() {
-        
-        Data.runData();
-        retrieveData();
-        
-        startGame();
-        
-        
-    }
 
     public static void Battle(NPC npc) {
 
@@ -33,7 +14,7 @@ public class Main {
 
         while (Player.playerMP.hp > 0 && npc.hp > 0) {
 
-            if (npcTurn == true) {
+            if (npcTurn) {
                 npc.npcAction(npc);
                 npcTurn = false;
             } else {
@@ -58,12 +39,30 @@ public class Main {
             JOptionPane.showMessageDialog(null, "You recieve R" + npc.money);
             JOptionPane.showMessageDialog(null, "You receive " + npc.exp + "EXP");
         }
-        
-        npc = NPC.setAttributes(npc);
+
+        NPC.setAttributes(npc);
         Player.setMPStats();
     }
 
+    /**
+     * Starts the game.
+     *
+     * This method clears the options in the Area class.
+     * It checks if the user wants to play the game by displaying a yes/no menu.
+     * If the user chooses not to play, the program exits.
+     *
+     * If a save has been detected, the method prompts the user to load the save.
+     * If the user chooses to load the save, it displays a welcome message and navigates to the Area.leave() method.
+     * If the user chooses not to load the save, it prompts the user to enter a player name.
+     * If the user enters a name, it displays a welcome message and navigates to the Area.village() method.
+     *
+     * If no save has been detected, the method prompts the user to enter a player name.
+     * If the user enters a name, it displays a welcome message, saves the data, and navigates to the Area.village() method.
+     *
+     */
+
     public static void startGame() {
+
 
         Area.options.clear();
 
@@ -71,7 +70,7 @@ public class Main {
             System.exit(0);
         }
 
-        if (hasSave == true) {
+        if (hasSave) {
 
             switch (Menu.yesNoMenu("UseSave?", "A save as been detected, Load Save?")) {
                 case 0:
@@ -133,17 +132,15 @@ public class Main {
     public static void saveData() {
         //this will save data
     }
-    
-    public static void deleteData() {
-        //this will delete all data
-    }
 
     public static int random(int min, int max) {
-        int num = (int) (Math.random() * (max - min + 1) + min);
-        return num;
+        return (int) (Math.random() * (max - min + 1) + min);
     }
 
     public static void main(String[] args) {
-        new Main();
+        Data.runData();
+        retrieveData();
+
+        startGame();
     }
 }

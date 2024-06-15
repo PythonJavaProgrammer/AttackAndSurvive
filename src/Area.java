@@ -1,19 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-
 import java.util.*;
 import javax.swing.*;
 
-/**
- *
- * @author csbot
- */
 public class Area {
 
-    static ArrayList<String> options = new ArrayList<String>();
+    static ArrayList<String> options = new ArrayList<>();
     static int AreaNum;
     static int AreaMaxLevel;
     static int AreaMinLevel;
@@ -62,7 +52,7 @@ public class Area {
         inSpecialArea = false;
         inBattle = false;
 
-        if (Data.gSiegfried.defeated == false) {
+        if (!Data.gSiegfried.defeated) {
             JOptionPane.showMessageDialog(null, "Oh you're approaching me");
             JOptionPane.showMessageDialog(null, "Well then, let's battle");
 
@@ -71,7 +61,7 @@ public class Area {
             JOptionPane.showMessageDialog(null, "The gym is empty, you have won");
         }
 
-        if (Data.gSiegfried.defeated == true && Data.mKripted.defeated == false) {
+        if (Data.gSiegfried.defeated && !Data.mKripted.defeated) {
             JOptionPane.showMessageDialog(null, "You have won, well done");
             JOptionPane.showMessageDialog(null, "As you go to receive your prize");
             JOptionPane.showMessageDialog(null, "You hear rumbling");
@@ -79,7 +69,7 @@ public class Area {
 
             Player.ending = "The end of the world";
             Main.ending();
-        } else if (Data.gSiegfried.defeated == true && Data.mKripted.defeated == true) {
+        } else if (Data.gSiegfried.defeated && Data.mKripted.defeated) {
             JOptionPane.showMessageDialog(null, "You have won, well done");
             JOptionPane.showMessageDialog(null, "As you go to receive your prize");
             JOptionPane.showMessageDialog(null, "A feeling of immense accomplishment falls over you");
@@ -102,7 +92,7 @@ public class Area {
 
         Main.Battle(Data.mKripted);
 
-        if (Data.mKripted.defeated == true) {
+        if (Data.mKripted.defeated) {
             JOptionPane.showMessageDialog(null, "You defeated the Boss, well done");
 
             Player.ending = "The saviour of the world";
@@ -119,7 +109,7 @@ public class Area {
         options.add("Next Area");
         options.add("Roam");
 
-        String emotion = "";
+        String emotion;
 
         JOptionPane.showMessageDialog(null, "You walk into the wilderness");
         if (Player.courage > 10) {
@@ -134,26 +124,26 @@ public class Area {
         switch (Menu.optionMenu(options)) {
             case 1:
 
-                if (AreaNum == 1 && Data.tChristiaan.defeated == false) {
-                    while (Data.tChristiaan.defeated == false) {
+                if (AreaNum == 1 && !Data.tChristiaan.defeated) {
+                    while (!Data.tChristiaan.defeated) {
                         JOptionPane.showMessageDialog(null, "Hey newbie you have to defeat me before passing");
                         Main.Battle(Data.tChristiaan);
                     }
                     nextArea();
-                } else if (Data.tJirah.defeated == false && AreaNum == 2) {
-                    while (Data.tJirah.defeated == false) {
+                } else if (!Data.tJirah.defeated && AreaNum == 2) {
+                    while (!Data.tJirah.defeated) {
                         JOptionPane.showMessageDialog(null, "You have to defeat me before passing");
                         Main.Battle(Data.tJirah);
                     }
                     nextArea();
-                } else if (Data.tLiam.defeated == false && AreaNum == 4) {
-                    while (Data.tLiam.defeated == false) {
+                } else if (!Data.tLiam.defeated && AreaNum == 4) {
+                    while (!Data.tLiam.defeated) {
                         JOptionPane.showMessageDialog(null, "It's dangerous out there, defeat me before passing");
                         Main.Battle(Data.tLiam);
                     }
                     nextArea();
-                } else if (Data.tDave.defeated == false && AreaNum == 6) {
-                    while (Data.tDave.defeated == false) {
+                } else if (!Data.tDave.defeated && AreaNum == 6) {
+                    while (!Data.tDave.defeated) {
                         JOptionPane.showMessageDialog(null, "You want to fight the gym leader aye, well you gotta beat me first");
                         Main.Battle(Data.tDave);
                     }
@@ -186,7 +176,7 @@ public class Area {
         JOptionPane.showMessageDialog(null, "You go to the MonsterPocket Center");
         JOptionPane.showMessageDialog(null, "Hello, how may I help you");
 
-        if (Player.HasMP != true) {
+        if (!Player.HasMP) {
             Menu.selectMP();
         } else {
             while (inSpecialArea) {
@@ -200,8 +190,8 @@ public class Area {
                         break;
                 }
 
-                options.remove(options.size() - 1);
-                options.remove(options.size() - 1);
+                options.removeLast();
+                options.removeLast();
 
             }
         }
@@ -215,7 +205,7 @@ public class Area {
         options.add("I'm afraid you have the wrong person, *Takes of hat*");
         options.add("So it seems... May I come inside");
 
-        if (Player.HasGoneHome == true) {
+        if (Player.HasGoneHome) {
 
             JOptionPane.showMessageDialog(null, "Welcome back sir");
 
@@ -318,11 +308,11 @@ public class Area {
 
         JOptionPane.showMessageDialog(null, "You are in Satoru Village");
 
-        if (Player.HasGoneHome == false) {
+        if (!Player.HasGoneHome) {
             options.add("Go to Monsterpocket Center (progress)");
             options.add("Go to wilderness (progress)");
             options.add("Go home");
-        } else if (Player.DiscoveredSecret == true) {
+        } else if (Player.DiscoveredSecret) {
             options.add("Go to MP Center");
             options.add("Go to wilderness");
             options.add("Go to cave");
@@ -340,7 +330,7 @@ public class Area {
 
             case 2:
 
-                if (Player.HasMP == false) {
+                if (!Player.HasMP) {
 
                     JOptionPane.showMessageDialog(null, "You walk into the wilderness");
                     JOptionPane.showMessageDialog(null, "It's dark, you are afraid");
@@ -357,9 +347,9 @@ public class Area {
                 break;
 
             case 3:
-                if (Player.HasGoneHome == false) {
+                if (!Player.HasGoneHome) {
                     home();
-                } else if (Player.DiscoveredSecret == true) {
+                } else if (Player.DiscoveredSecret) {
                     cave();
                 }
 
