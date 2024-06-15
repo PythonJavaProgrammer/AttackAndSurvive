@@ -1,15 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 import javax.swing.*;
-/**
- *
- * @author bothac
- */
+
 public class Data {
 
     //opel: Defence, dungar: damage, soloon: health, kripted: all
@@ -26,14 +16,14 @@ public class Data {
 
     public static void runData() {
 
-        damien = NPC.setAttributes(damien);
-        tChristiaan = NPC.setAttributes(tChristiaan);
-        tJirah = NPC.setAttributes(tJirah);
-        tLiam = NPC.setAttributes(tLiam);
-        tDave = NPC.setAttributes(tDave);
-        gSiegfried = NPC.setAttributes(gSiegfried);
-        mKripted = NPC.setAttributes(mKripted);
-        
+        NPC.setAttributes(damien);
+        NPC.setAttributes(tChristiaan);
+        NPC.setAttributes(tJirah);
+        NPC.setAttributes(tLiam);
+        NPC.setAttributes(tDave);
+        NPC.setAttributes(gSiegfried);
+        NPC.setAttributes(mKripted);
+
         Player.setMPStats();
     }
     

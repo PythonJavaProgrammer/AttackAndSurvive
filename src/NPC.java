@@ -1,15 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-
 import javax.swing.*;
 
-/**
- *
- * @author csbot
- */
 public class NPC {
 
     int level;
@@ -51,40 +41,29 @@ public class NPC {
         NPC mMP = null;
 
         boolean startBattle = false;
-        String statType = "";
+        String statType = switch (Main.random(1, 3)) {
+            case 1 -> "Attack";
+            case 2 -> "Health";
+            case 3 -> "Defence";
+            default -> "";
+        };
 
-        switch (Main.random(1, 3)) {
-            case 1:
-                statType = "Attack";
-                break;
-            case 2:
-                statType = "Health";
-                break;
-            case 3:
-                statType = "Defence";
-                break;
-        }
+        mMP = switch (Main.random(1, 3)) {
+            case 1 -> new NPC(Main.random(Area.AreaMinLevel, Area.AreaMaxLevel), "Dungar", "Dungar", statType);
+            case 2 -> new NPC(Main.random(Area.AreaMinLevel, Area.AreaMaxLevel), "Soloon", "Soloon", statType);
+            case 3 -> new NPC(Main.random(Area.AreaMinLevel, Area.AreaMaxLevel), "Opel", "Opel", statType);
+            default -> mMP;
+        };
 
-        switch (Main.random(1, 3)) {
-            case 1:
-                mMP = new NPC(Main.random(Area.AreaMinLevel, Area.AreaMaxLevel), "Dungar", "Dungar", statType);
-                break;
-            case 2:
-                mMP = new NPC(Main.random(Area.AreaMinLevel, Area.AreaMaxLevel), "Soloon", "Soloon", statType);
-                break;
-            case 3:
-                mMP = new NPC(Main.random(Area.AreaMinLevel, Area.AreaMaxLevel), "Opel", "Opel", statType);
-                break;
-        }
-
-        mMP = setAttributes(mMP);
+        assert mMP != null;
+        setAttributes(mMP);
         mMP.money = 0;
 
         if (Main.random(0, 100) <= 85) {
             startBattle = true;
         }
 
-        if (startBattle == true) {
+        if (startBattle) {
             JOptionPane.showMessageDialog(null, "You encountered a wild " + mMP.name);
             Main.Battle(mMP);
         } else {
