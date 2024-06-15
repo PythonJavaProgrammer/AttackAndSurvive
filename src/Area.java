@@ -11,6 +11,10 @@ public class Area {
     static boolean inSpecialArea = false;
     static boolean inBattle = false;
 
+    /**
+     * Displays a menu for the player to choose options in the Jot village.
+     *
+     */
     public static void village2() {
         options.clear();
         inSpecialArea = false;
@@ -47,6 +51,19 @@ public class Area {
 
     }
 
+    /**
+     * This method is responsible for handling the gym area in the game.
+     * It clears the options list, sets the inSpecialArea and inBattle flags to false,
+     * and checks if the Data.gSiegfried object is defeated.
+     * If it is not defeated, it displays two messages and initiates a battle with the Data.gSiegfried object.
+     * If it is defeated, it displays a message indicating that the gym is empty and the player has won.
+     * If Data.gSiegfried is defeated and Data.mKripted is not defeated, it displays three messages,
+     * including a blinding light that blinds the player and ends the game.
+     * If Data.gSiegfried is defeated and Data.mKripted is defeated, it displays two messages,
+     * including a feeling of immense accomplishment that falls over the player.
+     * After displaying the messages, it sets the Player.ending variable and calls the Main.ending method.
+     *
+     */
     public static void gym() {
         options.clear();
         inSpecialArea = false;
@@ -100,6 +117,17 @@ public class Area {
         }
     }
 
+/**
+ * This method represents the player entering the wilderness area in the game.
+ * It clears the options list, sets the inSpecialArea flag to false, and increments the Player's courage.
+ * It adds two options to the options list: "Next Area" and "Roam".
+ * It then displays a message to the user indicating that they have entered the wilderness.
+ * Based on the Player's courage level, it determines the emotion and displays it to the user.
+ * It then prompts the user to choose an option using the optionMenu method from the Menu class.
+ * Depending on the user's choice, it either navigates to the next area or calls the randomEncounter method from the NPC class.
+ * If the user chooses to roam and encounters an NPC, it recursively calls the wilderness method again.
+ * The method assumes that the Data class has instances of enemies.
+ * */
     public static void wilderness() {
         options.clear();
         inSpecialArea = false;
@@ -162,6 +190,19 @@ public class Area {
         }
     }
 
+/**
+ * This function is the entry point for the MonsterPocket Center area. It sets the player's
+ * MonsterPocket stats, clears the options, sets the area to special, and sets the battle flag to false.
+ * It also sets the maximum and minimum levels for the area to 1. It then adds two options to the
+ * options list: "Heal" and "Check MonsterPocket stats". After that, it displays two dialogs
+ * to the user: "You go to the MonsterPocket Center" and "Hello, how may I help you". If the player
+ * does not have a MonsterPocket, it calls the selectMP function from the Menu class. If the player
+ * has a MonsterPocket, it enters a while loop that continues until the inSpecialArea flag is false.
+ * Inside the loop, it displays a dialog to the user asking them to select an option. Depending on
+ * the user's selection, it performs different actions. If the user selects "Heal", it heals the
+ * player's pokemon by setting its hp to its base health. If the user selects "Check MonsterPocket Stats"
+ * the program displays the MP's stats using the printData function from the Data class.
+ * */
     public static void mpCenter() {
         Player.setMPStats();
         options.clear();
@@ -197,12 +238,15 @@ public class Area {
         }
     }
 
+    /**
+     * Function representing the facility with various dialogues and interactions.
+     */
     public static void facility() {
         options.clear();
         inSpecialArea = true;
         inBattle = false;
 
-        options.add("I'm afraid you have the wrong person, *Takes of hat*");
+        options.add("I'm afraid you have the wrong person, *Takes off hat*");
         options.add("So it seems... May I come inside");
 
         if (Player.HasGoneHome) {
@@ -284,7 +328,7 @@ public class Area {
 
         options.clear();
 
-        options.add("Uh... Yes of coarse! I must be taking my leave now if you'll excuse me");
+        options.add("Uh... Yes of course! I must be taking my leave now if you'll excuse me");
         options.add("I'm not the Doctor");
 
         switch (Menu.optionMenu(options)) {
@@ -301,6 +345,11 @@ public class Area {
 
     }
 
+    /**
+     * Represents the village area in the game. It initializes options, sets inSpecialArea to false,
+     * displays a message indicating the player is in Satoru Village, and provides options based on player status.
+     * It then prompts the user with a menu, processes the user's choice, and executes corresponding actions.
+     */
     public static void village() {
 
         options.clear();
@@ -358,6 +407,12 @@ public class Area {
 
     }
 
+    /**
+     * Displays a series of messages indicating that the player is going back home.
+     * Prompts the player to stay or leave using a yes/no menu.
+     * If the player chooses to stay, displays a message indicating that they fall into comfort and ends the game.
+     * If the player chooses to leave, displays a message indicating that they pick up a hat, sets the Player's HasGoneHome flag to true, and calls the leave() method.
+     */
     public static void home() {
         JOptionPane.showMessageDialog(null, "You go back home");
         JOptionPane.showMessageDialog(null, "You feel you could stay here forever");
@@ -376,6 +431,16 @@ public class Area {
 
     }
 
+    /**
+     * Increments the AreaNum and calls the corresponding method based on the new value of AreaNum.
+     * If AreaNum is 0, calls the village() method.
+     * If AreaNum is 1, sets AreaMaxLevel to 5 and AreaMinLevel to 2, and calls the wilderness() method.
+     * If AreaNum is 2, sets AreaMaxLevel to 10 and AreaMinLevel to 4, and calls the wilderness() method.
+     * If AreaNum is 3, calls the village2() method.
+     * If AreaNum is 4, sets AreaMaxLevel to 14 and AreaMinLevel to 9, and calls the wilderness() method.
+     * If AreaNum is 5, calls the gym() method.
+     * If AreaNum is greater than 5, decrements AreaNum by 2 and recursively calls the nextArea() method.
+     */
     public static void nextArea() {
 
         AreaNum++;
@@ -412,6 +477,16 @@ public class Area {
 
     }
 
+    /**
+     * Decrements the AreaNum and calls the corresponding method based on the new value of AreaNum.
+     * If AreaNum is 0, calls the village() method.
+     * If AreaNum is 1, sets AreaMaxLevel to 3 and AreaMinLevel to 2, and calls the wilderness() method.
+     * If AreaNum is 2, sets AreaMaxLevel to 7 and AreaMinLevel to 4, and calls the wilderness() method.
+     * If AreaNum is 3, calls the village2() method.
+     * If AreaNum is 4, sets AreaMaxLevel to 13 and AreaMinLevel to 9, and calls the wilderness() method.
+     * If AreaNum is 5, calls the gym() method.
+     * If AreaNum is less than 0, increments AreaNum by 2 and recursively calls the prevArea() method.
+     */
     public static void prevArea() {
 
         AreaNum--;
@@ -448,6 +523,10 @@ public class Area {
 
     }
 
+    /**
+     * This method is responsible for determining which area to navigate to after leaving the current area.
+     * If the current area number is less than 3, it calls the village method. Otherwise, it calls the village2 method.
+     */
     public static void leave() {
 
         if (AreaNum < 3) {

@@ -19,6 +19,11 @@ public class Player {
     static int courage = 0;
     static int money = 0;
 
+    /**
+     * Executes the player's action based on the selected option from the menu.
+     *
+     * @param enemy the NPC enemy that the player is interacting with
+     */
     public static void action(NPC enemy) {
         Area.options.clear();
 
@@ -42,6 +47,14 @@ public class Player {
 
     }
 
+    /**
+     * Sets the stats of the player's MonsterPocket (playerMP) based on the player's experience points (exp).
+     * The damage and defence of the playerMP are set to the corresponding values in the baseStats array.
+     * The playerMP's hit points (hp) are decremented until they are below the base hit points.
+     * The level of the playerMP is calculated based on the player's experience points.
+     * The playerMP's level is set to the calculated level.
+     * The playerMP's attributes are set based on its statType using the NPC.setAttributes method.
+     */
     public static void setMPStats() { 
 
         playerMP.damage = playerMP.baseStats[1];
@@ -65,7 +78,12 @@ public class Player {
 
         NPC.setAttributes(playerMP);
     }
-    
+
+    /**
+     * Calculates the level of the given player based on their experience points.
+     * @param x the player's experience points
+     * @return the player's level
+     */
     public static int getLevel(int x) {
         double a, b;
         int y;

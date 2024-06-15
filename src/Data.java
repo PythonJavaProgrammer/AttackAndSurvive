@@ -14,6 +14,12 @@ public class Data {
     
     static NPC mKripted = new NPC(20, "Kripted", "Kripted", "All");
 
+    /**
+     * Initializes the data for the game by setting attributes for the NPCs and player's MonsterPocket.*
+     * This function sets the attributes for each NPC in the game, including Damien, tChristiaan, tJirah, tLiam, tDave,
+     * gSiegfried, and mKripted. It also sets the stats for the player's MonsterPocket by calling the setMPStats() method
+     * in the Player class.
+     */
     public static void runData() {
 
         NPC.setAttributes(damien);
@@ -26,7 +32,12 @@ public class Data {
 
         Player.setMPStats();
     }
-    
+
+    /**
+     * Displays a dialog box with the name, level, hit points (HP), attack (ATK), and defense (DEF) of the given NPC.
+     *
+     * @param  npc  the NPC whose data is displayed
+     */
     public static void printData(NPC npc) {
         JOptionPane.showMessageDialog(null, "Name: " + npc.name + "\nLevel: " + npc.level + "/20\nHP: " + npc.hp + "/" + npc.baseStats[0] + "\nATK: " + npc.damage + "\nDEF: " + npc.defence);
     }
