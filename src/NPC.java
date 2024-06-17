@@ -23,6 +23,11 @@ public class NPC {
 
     }
 
+    /**
+     * Executes a random action for the given NPC.
+     *
+     * @param  npc  the NPC for which the action is executed
+     */
     public void npcAction(NPC npc) {
 
         int action = Main.random(0, npc.level + 2);
@@ -36,6 +41,11 @@ public class NPC {
         }
     }
 
+    /**
+     * Generates a random encounter with an NPC, determines the stat type of the NPC,
+     * creates the NPC based on the stat type, sets attributes for the NPC, and initiates a battle
+     * or allows the player to continue exploring based on a random chance.
+     */
     public static void randomEncounter() {
 
         NPC mMP = null;
@@ -72,7 +82,12 @@ public class NPC {
         }
     }
 
-    public static NPC setAttributes(NPC npc) {
+    /**
+     * Sets the attributes of the given NPC based on its stat type.
+     *
+     * @param  npc  the NPC whose attributes are set
+     */
+    public static void setAttributes(NPC npc) {
 
         int hp = 10;
         int damage = 3;
@@ -127,9 +142,14 @@ public class NPC {
         npc.baseStats[1] = npc.damage;
         npc.baseStats[2] = npc.defence;
 
-        return npc;
     }
 
+    /**
+     * Executes an attack action between two NPCs.
+     *
+     * @param  npc    the NPC initiating the attack
+     * @param  enemy  the NPC being attacked
+     */
     public void attack(NPC npc, NPC enemy) {
 
         JOptionPane.showMessageDialog(null, npc.name + " attacks");
@@ -151,6 +171,11 @@ public class NPC {
 
     }
 
+    /**
+     * Executes a buff action for the given NPC based on its stat type.
+     *
+     * @param  npc  the NPC to buff
+     */
     public void buff(NPC npc) {
         JOptionPane.showMessageDialog(null, npc.name + " buffed their " + npc.statType);
 
@@ -170,6 +195,11 @@ public class NPC {
 
     }
 
+    /**
+     * Executes a heal action for the given NPC.
+     *
+     * @param  npc  the NPC to heal
+     */
     public void heal(NPC npc) {
 
         JOptionPane.showMessageDialog(null, npc.name + " healed themselves");

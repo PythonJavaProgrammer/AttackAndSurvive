@@ -2,7 +2,17 @@ import java.util.*;
 import javax.swing.*;
 
 public class Menu {
-
+    /**
+     * Displays a menu with the given options and prompts the user to select an option.
+     * If the user selects "Exit", the program will exit. If the user selects "Previous Area"
+     * and the program is not currently in a special area, the previous area will be loaded.
+     * If the user selects "Leave" and the program is currently in a special area, the user
+     * will be prompted to leave the special area. If the user selects any other option, that
+     * option will be returned.
+     *
+     * @param  arr  an ArrayList of Strings representing the options to display in the menu
+     * @return      an integer representing the selected option
+     * */
     public static int optionMenu(ArrayList<String> arr) {
 
         if (Area.inSpecialArea) {
@@ -55,6 +65,13 @@ public class Menu {
         return selected;
     }
 
+    /**
+     * A description of the entire Java function.
+     *
+     * @param  title     description of parameter
+     * @param  question  description of parameter
+     * @return          description of return value
+     */
     public static int yesNoMenu(String title, String question) {
 
         int yesNo = JOptionPane.showConfirmDialog(null, question, title, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -66,6 +83,21 @@ public class Menu {
         return yesNo;
     }
 
+/**
+ * Selects a MonsterPocket for the player and configures its properties.
+ * This method clears the Area options, adds three options representing different MonsterPockets,
+ * and prompts the user to choose one. If the user chooses not to choose a MonsterPocket,
+ * the method leaves the current Area. The method then displays a message asking the user
+ * to pick one of the three MonsterPockets in front of them.
+ * Based on the user's choice, the method sets the player's MonsterPocket name and type.
+ * The method then clears the Area options, adds options for selecting a statType, and prompts
+ * the user to pick a statType. The method sets the player's MonsterPocket's statType based on
+ * the user's choice.
+ * The method then sets the player's MonsterPocket's stats and prompts the user to give the
+ * MonsterPocket a name. If the user chooses not to give a name, the method generates a default
+ * name. If the user chooses to give a name, the method prompts the user to enter a name and
+ * asks the user to verify their choice.
+ * then makes the user battle Damien.*/
     public static void selectMP() {
 
         Area.options.clear();
